@@ -1,15 +1,17 @@
 extends layout
 
 block content
-  h1= title
-  p Hola David, Bienvenido a #{title}
-  p Este, ejercicio ha sido terminado para la sesión 2 con las siguientes características:
-  ul#caracteristicas
-  li
-    a(href="https://nodejs.org/") Node Js
-  li
-    a(href="https://www.express.com/") Express
-  li
-    a(href="https://fezvrasta.github.io/bootstrap-material-design/") Boostrap Material Design Template
-  li
-    Separacion Modelo-Vista-Controlador MVC
+  #contenido.container-fluid
+    h1(class='container-fluid')= title
+    p(class='container-fluid') Hola David, Bienvenido a #{title}
+    p(class='container-fluid') Este, ejercicio ha sido terminado para la sesión 2 con las siguientes características:
+    #caracteristicas.card.container-fluid
+      ul.list-group
+        li.list-group-item
+          a(href="https://nodejs.org/") Node Js
+        li.list-group-item
+          a(href="https://www.express.com/") Express
+        li.list-group-item
+          a(href="https://fezvrasta.github.io/bootstrap-material-design/") Boostrap Material Design Template
+        li.list-group-item
+          Separacion Modelo-Vista-Controlador MVC
