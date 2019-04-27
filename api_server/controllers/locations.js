@@ -4,6 +4,10 @@ var mongoose = require("mongoose");
 var loc = mongoose.model("Location");
 var bodyParser = require("body-parser");
 
+var sendJSONresponse = function(res, status, content) {
+    res.status(status);
+    res.json(content);
+};
 
 // GET ALL POSTS
 module.exports.locationList = function(req, res, next) {    
@@ -37,7 +41,7 @@ module.exports.locationsFindById = function(req, res, next) {
 
 // POST ADD ELEMENT
 module.exports.locationsCreate = function(req, res, next) {    
-    Loc.create({
+    loc.create({
         name: req.params.name,
         address: req.params.address,
         facilities: req.params.facilities.split(","),

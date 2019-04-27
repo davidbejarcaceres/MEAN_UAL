@@ -19,6 +19,11 @@ router.get('/location/:id/reviews', ctrlReviews.reviewsFindById);
 router.put('/location/:id/', ctrlReviews.reviewsUpdate);
 router.get('/location/:id/findOne', ctrlReviews.findOne);
 
+// Codigo Original Profe
+router.post('/locations/:locationid/reviews', ctrlReviews.reviewsCreate2);
+router.get('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsReadOne);
+router.put('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsUpdateOne);
+router.delete('/locations/:locationid/reviews/:reviewid', ctrlReviews.reviewsDeleteOne);
 
 
 
