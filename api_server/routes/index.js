@@ -11,6 +11,8 @@ router.post('/location', ctrlLocations.locationsCreate);
 router.get('/location/:id?', ctrlLocations.locationsFindById);
 router.put('/location/:id?', ctrlLocations.locationsUpdate);
 router.delete('/location/:id?', ctrlLocations.locationsDelete);
+router.get('/locations/:lng/:lat', ctrlLocations.locationsListByDistance);
+
 
 /* Locations pages */
 router.get('/location/:id/reviews', ctrlReviews.reviewsList);

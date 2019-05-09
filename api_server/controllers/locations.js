@@ -9,6 +9,40 @@ var sendJSONresponse = function(res, status, content) {
     res.json(content);
 };
 
+module.exports.locationsListByDistance = function(req, res) {
+    var lng = parseFloat(req.params.lng);
+    var lat = parseFloat(req.params.lat);
+    var maxDistance = parseFloat(req.query.maxDistance);
+    var point = {
+      type: "Point",
+      coordinates: [lng, lat]
+    };
+    var geoOptions = {
+      spherical: true,
+      maxDistance: theEarth.getRadsFromDistance(maxDistance),
+      num: 10
+    };
+    if (!lng || !lat || !maxDistance) {
+      console.log('locationsListByDistance missing params');
+      sendJSONresponse(res, 404, {
+        "message": "lng, lat and maxDistance query parameters are all required"
+      });
+      return;
+    }
+    loc.geoNear(point, geoOptions, function(err, results, stats) {
+      var locations;
+      console.log('Geo Results', results);
+      console.log('Geo stats', stats);
+      if (err) {
+        console.log('geoNear error:', err);
+        sendJSONresponse(res, 404, err);
+      } else {
+        locations = buildLocationList(req, res, results, stats);
+        sendJSONresponse(res, 200, locations);
+      }
+    });
+  };
+
 // GET ALL POSTS
 module.exports.locationList = function(req, res, next) {    
     loc.find().exec(function (err, location){
