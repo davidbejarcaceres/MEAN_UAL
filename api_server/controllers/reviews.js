@@ -104,28 +104,6 @@ module.exports.reviewsCreate = function(req, res, next) {
             }   
                 
           })
-
-    // loc.findById(req.params.id).exec(function (err, location){
-    //     if (err) {
-    //         return res.status(404).send({message: "Bad request"});
-    //     } else {
-    //         if (location != null) {
-                
-    //             var newReview = {                    
-    //                 author: req.body.author,
-    //                 rating: req.body.rating,
-    //                 reviewText: req.body.reviewText,
-    //                 createdOn: req.body.createdOn
-    //             };
-
-                
-                
-    //             return res.status(200).send(location.reviews);
-    //         } else{
-    //             return res.status(404).send("No hay elemento location con ese Id");
-    //         }
-    //     }
-    // })
 };
 
 // GET ALL POSTS
